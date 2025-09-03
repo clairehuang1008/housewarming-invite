@@ -116,6 +116,63 @@
         font-size: 0.8125rem; /* 13px -> 0.8125rem */
         padding: 0.625rem 0 1.75rem; /* 10px, 28px */
       }
+      .rsvp-btn {
+        display: inline-block;
+        background-color: #2e8b68; /* Palm Green */
+        color: #fff;
+        font-family: "Playfair Display", "Noto Serif SC", serif;
+        font-weight: 700;
+        transition: background 0.3s ease, transform 0.2s ease;
+        margin-top: 2rem;
+      }
+      .rsvp-btn:hover {
+        background-color: #246c50; /* darker green */
+        transform: translateY(-2px);
+        cursor: pointer;
+      }
+
+      .rsvp-form {
+        text-align: left;
+        align-items: center;
+        gap: 2rem;
+        background-color: rgba(255, 210, 98, 0.771);
+        padding-inline: 2rem;
+        padding-block: 1rem;
+        border-radius: 1rem;
+        margin-top: 1rem;
+      }
+
+      .rsvp-form label {
+        font-weight: 700;
+        color: #184634;
+        display: flex;
+        font-size: 1rem;
+        gap: 0.5rem;
+      }
+
+      .rsvp-form input {
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        background-color: rgba(239, 235, 225, 0.474);
+        padding-inline: 1rem;
+      }
+
+      .rsvp-form button {
+        border: none;
+        background: #2e8b68; /* palm green */
+        color: #fff;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      .rsvp-form button:hover {
+        background: #246c50;
+        transform: translateY(-2px);
+      }
     </style>
   </head>
   <body>
@@ -142,6 +199,26 @@
                 class="p-1 m-0 rounded-2xl"
                 >3315 MONTGOMERY DR, APT 551<span>（黄黄&老何家）</span></span
               >
+            </div>
+            <div class="w-full flex justify-center items-center flex-col">
+              <button class="rsvp-btn text-3xl mt-3 px-6 py-2 rounded-xl">
+                RSVP
+              </button>
+              <form class="rsvp-form hidden">
+                <label>
+                  Your Name
+                  <input type="text" name="name" required />
+                </label>
+
+                <label>
+                  # of Guests
+                  <input type="text" name="guests" required />
+                </label>
+
+                <button class="rsvp-submit-btn" type="submit">
+                  Submit RSVP
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -197,5 +274,42 @@
     <footer>
       © White Lotus · House Warming · Santa Clara Square · 黄黄 & 老何家
     </footer>
+    <script>
+      const GOOGLE_SHEET_API =
+        "https://script.google.com/macros/s/AKfycbwRk6f7qa5Bvo2wmAmK3fj2i1GXB_33ORVyjicnLekXAw4oVVuUtXr2An3XE0DKeyCJvw/exec";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const rsvpBtn = document.querySelector(".rsvp-btn");
+        rsvpBtn.addEventListener("click", () => {
+          const rsvpForm = document.querySelector(".rsvp-form");
+          rsvpForm.classList.remove("hidden");
+          rsvpForm.classList.add("flex");
+        });
+
+        const form = document.querySelector(".rsvp-form");
+        const submitBtn = document.querySelector(".rsvp-submit-btn");
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          submitBtn.textContent = "Submitting...";
+          submitBtn.disabled = true;
+          const formData = new FormData(form);
+          try {
+            const response = await fetch(GOOGLE_SHEET_API, {
+              method: "POST",
+              body: formData,
+            });
+            if (response.ok) {
+              alert("RSVP submitted successfully!");
+              form.reset();
+              form.classList.add("hidden");
+            }
+            submitBtn.textContent = "Submit";
+            submitBtn.disabled = false;
+          } catch (error) {
+            alert("There was an error submitting your RSVP. Please try again.");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
