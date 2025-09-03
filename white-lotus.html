@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>白莲花度假村 · House Warming</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;800;900&family=Playfair+Display:wght@600;700;800&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --paper: #f7e2b2; /* 海报底色 */
+        --ink: #184634; /* 深墨绿（标题） */
+        --sun: #b24b13; /* 橙日落 */
+        --palm: #2e8b68; /* 棕榈绿 */
+        --ocean: #59b3a5; /* 海洋青 */
+        --sand: #f1c88e; /* 沙滩 */
+        --leaf: #20704c; /* 叶子绿 */
+        --accent: #df8a31; /* 强调色 */
+      }
+      /* --- ADDED RULES START --- */
+      html {
+        font-size: 1.6667vw;
+      }
+      @media (min-width: 960px) {
+        html {
+          font-size: 16px;
+        }
+      }
+      /* --- ADDED RULES END --- */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: #2b2b2b;
+        line-height: 1.7;
+        font-family: "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+      }
+      .wrap {
+        max-width: 60rem; /* 960px -> 60rem */
+        margin: 0 auto;
+        padding: 1.125rem; /* 18px -> 1.125rem */
+      }
+      .poster {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(180deg, #fff7, #fff0), var(--paper);
+        border: 1px solid #00000014; /* 1px borders are often okay to leave as px */
+        border-radius: 1.125rem; /* 18px -> 1.125rem */
+        box-shadow: 0 0.875rem 2.375rem rgba(0, 0, 0, 0.06); /* 14px -> 0.875rem, 38px -> 2.375rem */
+      }
+      .band {
+        text-align: center;
+        color: var(--ink);
+        font-family: "Playfair Display", serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.375rem; /* 22px -> 1.375rem */
+      }
+      .hero {
+        padding: 0.375rem 1.125rem 0; /* 6px -> 0.375rem, 18px -> 1.125rem */
+      }
+      .title-cn {
+        font-family: "Noto Serif SC", serif;
+        color: var(--sun);
+        text-align: center;
+        font-weight: 700;
+        font-size: 3.5rem; /* 56px -> 3.5rem */
+      }
+      .scene {
+        position: relative;
+        height: 18.75rem; /* 300px -> 18.75rem */
+        border-radius: 0.875rem; /* 14px -> 0.875rem */
+        margin: 0.625rem 0.75rem; /* 10px -> 0.625rem, 12px -> 0.75rem */
+        overflow: hidden;
+        background: linear-gradient(#bfeee1, #9bd6c5);
+      }
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 0.875rem; /* 14px -> 0.875rem */
+        justify-content: center;
+        color: var(--ink);
+        font-family: "Playfair Display", serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin: 0.375rem 0 0.125rem; /* 6px -> 0.375rem, 2px -> 0.125rem */
+      }
+      .divider {
+        height: 2px; /* Fine to keep as px */
+        background: var(--ink);
+        width: 6.25rem; /* 100px -> 6.25rem */
+        opacity: 0.6;
+      }
+      .section-cn {
+        font-family: "Noto Serif SC", serif;
+        font-size: 1.75rem; /* 28px -> 1.75rem */
+        color: var(--ink);
+      }
+      footer {
+        text-align: center;
+        color: #325;
+        font-size: 0.8125rem; /* 13px -> 0.8125rem */
+        padding: 0.625rem 0 1.75rem; /* 10px, 28px */
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="poster" aria-label="White Lotus poster style invitation">
+        <div
+          style="
+            background-image: url(./vacation_illustration.png);
+            height: 35rem;
+            background-size: cover;
+          "
+        >
+          <div
+            class="pt-8 font-bold text-3xl text-center"
+            style="color: var(--leaf); font-family: 'Playfair Display', serif"
+          >
+            SATURDAY, OCT 11 · 3PM
+          </div>
+          <div class="hero">
+            <h1 class="title-cn">主题派对·白莲花度假村</h1>
+            <div class="band">
+              <span
+                style="background-color: rgba(255, 240, 202, 0.474)"
+                class="p-1 m-0 rounded-2xl"
+                >3315 MONTGOMERY DR, APT 551<span>（黄黄&老何家）</span></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 度假风分隔与穿搭示意 -->
+        <div class="section-title pt-5" aria-hidden="true">
+          <span class="divider"></span>
+          <span class="font-bold text-3xl">DRESS CODE: RESORT WEAR</span>
+          <span class="divider"></span>
+        </div>
+        <div class="mx-10 my-4">
+          <img
+            src="./dress_code_sample.png"
+            width="100%"
+            alt="Resort wear suggestions"
+            class="rounded-2xl"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <div
+            class="w-1/2 m-8 rounded-2xl px-5 py-3 text-center flex flex-col items-center justify-center mr-2"
+            style="background-color: #f1c88e"
+          >
+            <span class="band">Parking Info</span>
+            <span
+              >等搞明白那个Callbox怎么work再更新这个部分，搞不明白就停leasing
+              office旁边</span
+            >
+          </div>
+          <div
+            class="w-1/2 m-8 rounded-2xl px-5 py-3 text-center flex items-center justify-center ml-2"
+            style="
+              background-image: url(./bar.png);
+              height: 15rem;
+              background-size: cover;
+            "
+          >
+            <p
+              style="
+                font-family: 'Playfair Display', serif;
+                background-color: rgba(255, 240, 202, 0.474);
+              "
+              class="text-3xl font-bold p-1 rounded-xl"
+            >
+              TROPICAL SNACKS AND DRINKS PROVIDED - BYO WELCOME!
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © White Lotus · House Warming · Santa Clara Square · 黄黄 & 老何家
+    </footer>
+  </body>
+</html>
